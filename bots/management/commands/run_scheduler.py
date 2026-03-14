@@ -191,6 +191,7 @@ class Command(BaseCommand):
                 if (bot.id, bot.join_at.isoformat()) in pending_scheduled_bot_task_args:
                     # The bot is already being launched, so we can skip it
                     continue
+                Bot.objects.filter(id=bot.id, state=BotStates.SCHEDULED).update(state=BotStates.READY)
 
                 if bot.join_at > join_at_jitter_threshold:
                     # The bot is above the jitter threshold, so we launch it with a random delay of up to bot.join_at - join_at_jitter_threshold seconds
