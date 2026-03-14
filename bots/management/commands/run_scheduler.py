@@ -205,7 +205,7 @@ class Command(BaseCommand):
                 # --- THE CRITICAL FIX ---
                 # Change state to 4 (Joining) so the scheduler ignores it on the next loop
                 bot.state = 4 
-                bot.save(update_fields=['state'])
+                bot.save(update_fields=["state"])
 
                 num_bots_launched += 1
 
